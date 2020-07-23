@@ -46,7 +46,7 @@ class Navbar extends Component {
                                 borderColor: 'green',
                                 height: 13,
                                 width: 13,
-                                marginLeft: -7,
+                                marginLeft: 1,
                                 marginTop: -3,
                                 backgroundColor: 'green',
                                 boxShadow: 'none',
