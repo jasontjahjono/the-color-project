@@ -13,7 +13,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {ChromePicker} from 'react-color';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
+import {arrayMove} from 'react-sortable-hoc';
 
 const drawerWidth = 400;
 
@@ -126,6 +127,10 @@ export default function PersistentDrawerLeft(props) {
     setColors(colors.filter(color => color.name !== colorName));
   }
 
+  const onSortEnd = ({oldIndex, newIndex}) => {
+    setColors(arrayMove(colors, oldIndex, newIndex))
+  }
+
   useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', value =>
       colors.every(
@@ -227,14 +232,12 @@ export default function PersistentDrawerLeft(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        {colors.map(color => (
-          <DraggableColorBox
-            color={color.color}
-            name={color.name}
-            handleClick={() => removeColor(color.name)}
-            key={color.name}
-          />
-        ))}
+        <DraggableColorList
+          colors={colors}
+          removeColor={removeColor}
+          axis="xy"
+          onSortEnd={onSortEnd}
+        />
       </main>
     </div>
   );
