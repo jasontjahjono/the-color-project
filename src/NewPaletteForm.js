@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
   },
   appBarShift: {
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState('teal');
@@ -107,6 +107,17 @@ export default function PersistentDrawerLeft() {
     setName(evt.target.value);
   }
 
+  const handleSubmit = () => {
+    let newName = "New Test Palette";
+    const newPalette = {
+      paletteName: newName,
+      id: newName.toLowerCase().replace(/ /g, "-"),
+      colors: colors
+    }
+    props.savePalette(newPalette);
+    props.history.push("/");
+  }
+
   useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', value =>
       colors.every(
@@ -123,6 +134,7 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
       <AppBar
         position="fixed"
+        color="default"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -140,6 +152,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap>
             Persistent drawer
           </Typography>
+          <Button variant="contained" color="primary" onClick={handleSubmit}>Save Palette</Button>
         </Toolbar>
       </AppBar>
       <Drawer
