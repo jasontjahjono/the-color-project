@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft(props) {
+export default function NewPaletteForm(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState('teal');
