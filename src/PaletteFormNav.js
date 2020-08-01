@@ -29,7 +29,7 @@ class PaletteFormNav extends Component {
         });
     }
     render() {
-        const {classes, open} = this.props;
+        const {classes, open, handleSubmit, handleDrawerOpen} = this.props;
         const {newPaletteName} = this.state;
         return (
             <div>
@@ -45,7 +45,7 @@ class PaletteFormNav extends Component {
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={this.props.handleDrawerOpen}
+                        onClick={handleDrawerOpen}
                         edge="start"
                         className={clsx(classes.menuButton, open && classes.hide)}
                     >
@@ -54,7 +54,7 @@ class PaletteFormNav extends Component {
                     <Typography variant="h6" noWrap>
                         Persistent drawer
                     </Typography>
-                    <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
+                    <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
                         <TextValidator
                         label="Palette Name"
                         value={this.state.newPaletteName}
