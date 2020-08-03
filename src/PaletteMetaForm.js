@@ -6,15 +6,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 
 export default function PaletteMetaForm(props) {
-    const {handleSubmit, palettes} = props;
-    const [open, setOpen] = useState(true);
+    const {handleSubmit, palettes, hideForm} = props;
+    const [open] = useState(true);
     const [newPaletteName, setName] = useState("");
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const handlePaletteChange = (evt) => {
         setName(evt.target.value);
@@ -27,7 +25,7 @@ export default function PaletteMetaForm(props) {
     });
 
     return (
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Dialog open={open} onClose={hideForm} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
             <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
                 <DialogContent>
@@ -35,6 +33,7 @@ export default function PaletteMetaForm(props) {
                         Please enter a name for your new beautiful palette. Make sure
                         it's unique
                     </DialogContentText>
+                    <Picker />
                     <TextValidator
                         label="Palette Name"
                         fullWidth
@@ -47,7 +46,7 @@ export default function PaletteMetaForm(props) {
                     
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={hideForm} color="primary">
                         Cancel
                     </Button>
                     <Button variant="contained" color="primary" type="submit">Save Palette</Button>
