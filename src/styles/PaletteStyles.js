@@ -16,7 +16,7 @@ export default {
         display: "inline-block",
         position: "relative",
         cursor: "pointer",
-        marginBottom: "-3.9px",
+        marginBottom: "-4.0px",
         opacity: 1,
         backgroundColor: "black",
         "& a": {

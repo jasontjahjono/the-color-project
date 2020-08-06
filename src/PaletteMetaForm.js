@@ -29,6 +29,7 @@ export default function PaletteMetaForm(props) {
             id: newPaletteName.toLowerCase().replace(/ /g, "-")
         }
         handleSubmit(newPalette);
+        setStage("");
     }
 
     useEffect(() => {

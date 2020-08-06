@@ -8,7 +8,7 @@ export default {
         display: "inline-block",
         position: "relative",
         cursor: "pointer",
-        marginBottom: "-3.9px",
+        marginBottom: "-4.0px",
         "&:hover button" : {
             opacity: 1
         },
