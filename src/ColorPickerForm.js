@@ -52,35 +52,35 @@ class ColorPickerForm extends Component {
                     onChangeComplete={this.updateCurrentColor}
                     className={classes.picker}
                 />
-                <ValidatorForm onSubmit={this.handleSubmit}>
-                <TextValidator
-                    value={newColorName}
-                    variant="filled"
-                    label="Color Name"
-                    margin="normal"
-                    onChange={this.handleColorChange}
-                    validators={['required', 'isColorNameUnique', 'isColorUnique']}
-                    errorMessages={[
-                    'Enter a color name',
-                    'Color name must be unique',
-                    'Color already used'
-                    ]}
-                    className={classes.colorNameInput}
-                />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    disabled={isPaletteFull}
-                    style={{
-                    backgroundColor: isPaletteFull
-                        ? "grey"
-                        : currentColor
-                    }}
-                    className={classes.addColor}
-                >
-                    {isPaletteFull ? "Palette Full" : "Add Color"}
-                </Button>
+                <ValidatorForm onSubmit={this.handleSubmit} instantValidate={false}>
+                    <TextValidator
+                        value={newColorName}
+                        variant="filled"
+                        label="Color Name"
+                        margin="normal"
+                        onChange={this.handleColorChange}
+                        validators={['required', 'isColorNameUnique', 'isColorUnique']}
+                        errorMessages={[
+                        'Enter a color name',
+                        'Color name must be unique',
+                        'Color already used'
+                        ]}
+                        className={classes.colorNameInput}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        disabled={isPaletteFull}
+                        style={{
+                        backgroundColor: isPaletteFull
+                            ? "grey"
+                            : currentColor
+                        }}
+                        className={classes.addColor}
+                    >
+                        {isPaletteFull ? "Palette Full" : "Add Color"}
+                    </Button>
                 </ValidatorForm>
             </div>
         )
