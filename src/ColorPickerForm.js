@@ -66,9 +66,6 @@ class ColorPickerForm extends Component {
                     'Color already used'
                     ]}
                     className={classes.colorNameInput}
-                    // InputProps={{
-                    //     className: classes.colorNameInput
-                    // }}
                 />
                 <Button
                     variant="contained"

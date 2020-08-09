@@ -6,10 +6,10 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import {arrayMove} from 'react-sortable-hoc';
 import DraggableColorList from './DraggableColorList';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
-import {arrayMove} from 'react-sortable-hoc';
 import useStyles from './styles/NewPaletteFormStyles';
 
 export default function NewPaletteForm(props) {
@@ -46,7 +46,6 @@ export default function NewPaletteForm(props) {
   }
 
   const addRandomColor = () => {
-    //pick random color from existing palettes
     const allColors = palettes.map(p => p.colors).flat();
     let rand = Math.floor(Math.random() * allColors.length);
     const randomColor = allColors[rand];
